@@ -9,10 +9,16 @@ html {
   height: 100%;
 }
 
+/* css code for legend found here: https://leafletjs.com/examples/choropleth/ */
+/* help setting the background color of the legend here: https://codepen.io/haakseth/pen/KQbjdO */
 .legend {
   line-height: 18px;
   color: #000000;
+  background: white;
+  padding: 6px 8px;
 }
+
+
 .legend i {
   width: 18px;
   height: 18px;

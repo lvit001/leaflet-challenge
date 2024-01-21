@@ -49,8 +49,9 @@ function markerSize(magnitude) {
 d3.json(url).then(data => {
     L.geoJson(data, {
         
-        // point to layer and circleMarker: https://leafletjs.com/reference.html#geojson
+        // point to layer and L.circleMarker: https://leafletjs.com/reference.html#geojson
         pointToLayer: function (feature, latlng) {
+            console.log(feature)
             return L.circleMarker(latlng);
         },
 
@@ -67,7 +68,7 @@ d3.json(url).then(data => {
 
         },
         
-        // add popups to each circle on the map
+        // add popups to each circle on the map including html formatting
         onEachFeature: function(feature, layer) {
             layer.bindPopup(`<h3> Location: ${feature.properties.place}</h3><hr><p> 
             Date: ${new Date(feature.properties.time)}</p><hr><p> Magnitude: ${feature.properties.mag}</p>
@@ -77,7 +78,7 @@ d3.json(url).then(data => {
     }).addTo(myMap);
     
     // Add a legend
-    // code for legend found here
+    // code for legend found here: https://leafletjs.com/examples/choropleth/
     var legend = L.control({position: 'bottomright'});
 
     legend.onAdd = function (map) {
