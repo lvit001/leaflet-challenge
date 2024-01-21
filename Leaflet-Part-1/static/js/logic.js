@@ -39,17 +39,13 @@ function markerColor(coordinate) {
 
 // define a function that will mopify the size of the point based on magnitude
 // greater magnitude = larger size
+// added a multiplier to make the circles more visible on the map
 function markerSize(magnitude) {
-    if (magnitude === 0) {
-        return 1;
-    }
-    else {
         return magnitude * 3;
-    }
 } 
 
 
-// Get the data with d3.
+// Get the data with d3
 d3.json(url).then(data => {
     L.geoJson(data, {
         
@@ -79,7 +75,9 @@ d3.json(url).then(data => {
         }
 
     }).addTo(myMap);
+    // Add a legend
+    
+
 })
 
 
-// // Add a legend
