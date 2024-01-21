@@ -75,8 +75,27 @@ d3.json(url).then(data => {
         }
 
     }).addTo(myMap);
-    // Add a legend
     
+    // Add a legend
+    // code for legend found here
+    var legend = L.control({position: 'bottomright'});
+
+    legend.onAdd = function (map) {
+
+        var div = L.DomUtil.create('div', 'info legend'),
+            depths = [-10, 10, 30, 50, 70, 90];
+
+        // loop through our density intervals and generate a label with a colored square for each interval
+        for (var i = 0; i < depths.length; i++) {
+            div.innerHTML +=
+                '<i style="background:' + markerColor(depths[i] + 1) + '"></i> ' +
+                depths[i] + (depths[i + 1] ? '&ndash;' + depths[i + 1] + '<br>' : '+');
+        }
+
+        return div;
+    };
+
+    legend.addTo(myMap);
 
 })
 
